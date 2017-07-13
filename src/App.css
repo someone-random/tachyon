@@ -55,9 +55,9 @@ td, th{
   line-height:100px;
   margin-bottom: 5px;
 }
-#highlight{
+.highlight{
   color:red;
 }
-#nohighlight{
+.nohighlight{
   color:white;
 }

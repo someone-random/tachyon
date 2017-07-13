@@ -11,9 +11,6 @@ class App extends Component {
       a: "nohighlight"
     }
   }
-  handleClick(a){
-    console.log("hi")
-  }
   showUser(name){
     if(this.state.show[this.props.users.indexOf(name)]===false)
     {
@@ -27,7 +24,10 @@ class App extends Component {
         a: "highlight"
       })
     }
-    console.log(this.state.show[this.props.users.indexOf(name)])
+    console.log(this.state.show[0])
+    console.log(this.state.show[1])
+    console.log(this.state.show[2])
+    console.log(this.state.show[3])
   }
   getColor(name){
     if(this.state.show[this.props.users.indexOf(name)]){
@@ -37,12 +37,11 @@ class App extends Component {
     }
   }
   render() {
-    console.log(this.state.a)
     return (
       <div id="data">
         <div id="names">
           {this.props.users.map((user) => (
-            <div id="username" onClick={this.showUser}>
+            <div id="username" onClick={() => this.showUser(user)}>
               {user.name}
             </div>
           ))}

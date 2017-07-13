@@ -10,27 +10,22 @@ class App extends Component {
       show: [this.props.users.length],
       a: [this.props.users.length]
     })
-  for (var i=0;i<this.props.users.length;i++){
-    this.setState({
-        [this.state.show[i]]: true,
-        [this.state.a[i]]: "nohighlight",
-    })
-    console.log(this.state.show)
-  }
-}
+    for (var i=0;i<this.props.users.length;i++){
+      this.state.show[i]= true,
+      this.state.a[i]= "nohighlight"
+      }
+    }
+
+
   showUser(name){
     if(this.state.show[this.props.users.indexOf(name)]===false)
     {
-      this.setState({
-        [this.state.show[this.props.users.indexOf(name)]]: true,
-        [this.state.a[this.props.users.indexOf(name)]]: "nohighlight",
-      })
+      this.state.show[this.props.users.indexOf(name)]=true
+      this.state.a[this.props.users.indexOf(name)]="nohighlight"
     } else {
-      this.setState({
-        [this.state.show[this.props.users.indexOf(name)]]: false,
-        [this.state.a[this.props.users.indexOf(name)]]: "highlight",
-      })
-    }
+      this.state.show[this.props.users.indexOf(name)]=false
+      this.state.a[this.props.users.indexOf(name)]="highlight"}
+    this.forceUpdate()
     console.log(this.state.show[0])
     console.log(this.state.show[1])
     console.log(this.state.show[2])
@@ -40,13 +35,7 @@ class App extends Component {
     console.log(this.state.a[2])
     console.log(this.state.a[3])
   }
-  getColor(name){
-    if(this.state.show[this.props.users.indexOf(name)]){
-      return "nohighlight"
-    } else {
-      return "highlight"
-    }
-  }
+
   render() {
     return (
       <div id="data">
@@ -58,14 +47,15 @@ class App extends Component {
           ))}
         </div>
         <table>
-        {this.props.users.map((user) => (
-          <tbody className={this.state.a[this.props.users.indexOf(user)]}>
-              <td>{user.name}</td>
-              <td>Category</td>
-              <td>Brand</td>
-              <td>Model</td>
-              <td>Serial Number</td>
-            </tbody>))}
+          {this.props.users.map((user) => (
+            <tbody className={this.state.a[this.props.users.indexOf(user)]}>
+                <td>{user.name}</td>
+                <td>Category</td>
+                <td>Brand</td>
+                <td>Model</td>
+                <td>Serial Number</td>
+            </tbody>
+          ))}
         </table>
       </div>
     );

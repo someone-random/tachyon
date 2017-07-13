@@ -15,10 +15,14 @@ table{
   margin-left:26px;
   color:white;
   text-align:left;
+  border:solid white 1px;
 }
 td, th{
   width:100px;
   font-size:1em;
+  border:solid white 1px;
+  margin:0px;
+  padding:45px;
 }
 #data{
   display:flex;
@@ -42,7 +46,7 @@ td, th{
   padding-right:10px;
   margin-left:10px;
 }
-#username{
+.username{
   margin-top: 5px;
   background-color:skyblue;
   height:100px;
@@ -55,9 +59,24 @@ td, th{
   line-height:100px;
   margin-bottom: 5px;
 }
+.username-highlight{
+  margin-top: 5px;
+  background-color:lightgreen;
+  height:100px;
+  width:100px;
+  text-align: center;
+  vertical-align: middle;
+  border-radius:100%;
+  border:solid white 1px;
+  color:white;
+  line-height:100px;
+  margin-bottom: 5px;
+}
 .highlight{
-  color:red;
+  background: lightgreen;
+  color:white;
 }
 .nohighlight{
   color:white;
+  background:skyblue;
 }

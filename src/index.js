@@ -7,7 +7,12 @@ const users = [
   {name: 'A'},
   {name: 'B'},
   {name: 'C'},
-  {name: 'D'}
+  {name: 'D'},
+  {name: 'E'},
+  {name: 'F'},
+  {name: 'G'},
+  {name: 'H'},
+  {name: 'I'}
 ]
 ReactDOM.render(<App users={users} />, document.getElementById('root'));
 //registerServiceWorker();

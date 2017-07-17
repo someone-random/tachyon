@@ -80,3 +80,6 @@ td, th{
   color:white;
   background:skyblue;
 }
+button{
+  display: block;
+}

@@ -81,5 +81,11 @@ td, th{
   background:skyblue;
 }
 button{
-  display: block;
+  height: 30px;
+  width: 100px;
+  margin-left: 5px;
+  border-radius: 10px;
+  background:skyblue;
+  color:white;
+  margin-top: -30px;
 }

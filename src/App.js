@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import * as firebase from 'firebase'
+import * as firebase from 'firebase';
+
 class App extends Component {
   constructor(props){
     super(props);
@@ -9,8 +10,7 @@ class App extends Component {
     this.state = ({
       show: [this.props.users.length], 
       a: [this.props.users.length],
-      b:[this.props.users.length],
-      email: ""
+      b:[this.props.users.length]
     })
     for (var i=0;i<this.props.users.length;i++){
       this.state.show[i]= true
@@ -23,7 +23,7 @@ class App extends Component {
     firebase.auth().getRedirectResult().then(function(result){
       if(result.credential){
         var token = result.credential.accessToken
-        console.log("hi")
+        console.log("logged in")
       }
       var user = result.user
     }).catch(function(error) {
@@ -55,8 +55,8 @@ class App extends Component {
   render() {
     firebase.auth().onAuthStateChanged(function(user){
           if(user){
-            this.state.email = user
-            console.log(this.state.email.email)
+            var email = user.email
+            console.log(email)
           }
           else{
             console.log("out")

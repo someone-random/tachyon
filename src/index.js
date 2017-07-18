@@ -13,7 +13,10 @@ const users = [
   {name: 'F'},
   {name: 'G'},
   {name: 'H'},
-  {name: 'I'}
+  {name: 'I'},
+]
+const category = [
+  'A','B','C','D','E','F','G','H','I'
 ]
 var config = {
   apiKey: "AIzaSyAj0Q6DBp0d6xXd3qlts4c0q-ZWzRzP8lI",
@@ -24,5 +27,8 @@ var config = {
   messagingSenderId: "336062402100"
 };
 firebase.initializeApp(config);
-ReactDOM.render(<App users={users} />, document.getElementById('root'));
+var database = firebase.database();
+var number = firebase.database().ref("A")
+console.log(number)
+ReactDOM.render(<App users={users} category={category}/>, document.getElementById('root'));
 //registerServiceWorker();

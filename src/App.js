@@ -10,12 +10,14 @@ class App extends Component {
     this.state = ({
       show: [this.props.users.length], 
       a: [this.props.users.length],
-      b:[this.props.users.length]
+      b:[this.props.users.length],
+      cat: [this.props.category.length]
     })
     for (var i=0;i<this.props.users.length;i++){
       this.state.show[i]= true
       this.state.a[i]= "nohighlight"
       this.state.b[i]="username"
+      this.state.cat[i]=this.props.category[i]
       }
     }
   login(){
@@ -78,10 +80,7 @@ class App extends Component {
             <tbody className={this.state.a[this.props.users.indexOf(user)]} key={this.props.users.indexOf(user)}>
               <tr>
                 <td>{user.name}</td>
-                <td>Category</td>
-                <td>Brand</td>
-                <td>Model</td>
-                <td>Serial Number</td>
+                <td>{this.state.cat[this.props.users.indexOf(user)]}</td>
               </tr>
             </tbody>
           ))}

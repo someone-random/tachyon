@@ -1,4 +1,4 @@
-import React from 'react'
+/*import React from 'react'
 import config from './config'
 
 export function checkAuth(immediate, callback) {
@@ -17,4 +17,4 @@ export function load(callback){
         const data = response.result.values || []
       })
     })
-  }}
+  }}*/

@@ -40,9 +40,9 @@ class App extends Component {
     }
     this.forceUpdate()
   }
+  
 
   render() {
-    
     return (
       <div>
         <SessionManagement/>

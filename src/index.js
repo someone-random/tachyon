@@ -5,8 +5,9 @@ import App from './App';
 import * as firebase from 'firebase'
 import configs from './config'
 import { checkAuth , load } from './spreadsheet'
+import Home from './Home'
 //import registerServiceWorker from './regiserServiceWorker';
-const users = [
+export const users = [
   {name: 'A'},
   {name: 'B'},
   {name: 'C'},
@@ -17,7 +18,7 @@ const users = [
   {name: 'H'},
   {name: 'I'},
 ]
-const category = [
+export const category = [
   'A','B','C','D','E','F','G','H','I'
 ]
 var config = {
@@ -103,5 +104,5 @@ function authorize(callback) {
   }
   callback(authClient);
 }*/
-ReactDOM.render(<App users={users} category={category}/>, document.getElementById('root'));
+ReactDOM.render(<Home users={users} category={category}/>, document.getElementById('root'));
 //registerServiceWorker();

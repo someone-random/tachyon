@@ -28,6 +28,8 @@ td, th{
   display:flex;
   background:lightblue;
   flex-direction:row;
+  margin-top:5px;
+  margin-left:20%;
 }
 #root{
   background:lightblue;

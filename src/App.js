@@ -2,24 +2,11 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import * as firebase from 'firebase';
+import Dtable from './table'
+import SessionManagement from './SessionManagement'
 
 class App extends Component {
-  constructor(props){
-    super(props);
-    this.showUser=this.showUser.bind(this)
-    this.state = ({
-      show: [this.props.users.length], 
-      a: [this.props.users.length],
-      b:[this.props.users.length],
-      cat: [this.props.category.length]
-    })
-    for (var i=0;i<this.props.users.length;i++){
-      this.state.show[i]= true
-      this.state.a[i]= "nohighlight"
-      this.state.b[i]="username"
-      this.state.cat[i]=this.props.category[i]
-      }
-    }
+  
   login(){
     firebase.auth().signInWithRedirect(new firebase.auth.GoogleAuthProvider())
     firebase.auth().getRedirectResult().then(function(result){
@@ -55,36 +42,11 @@ class App extends Component {
   }
 
   render() {
-    firebase.auth().onAuthStateChanged(function(user){
-          if(user){
-            var email = user.email
-            console.log(email)
-          }
-          else{
-            console.log("out")
-          } 
-        })
+    
     return (
-      <div id="data">
-        <button type="button" onClick={() => this.login()}>Sign in</button>
-        <button type="button" onClick={() => this.logout()}>Sign out</button>
-        <div id="names">
-          {this.props.users.map((user) => (
-            <div className={this.state.b[this.props.users.indexOf(user)]} onClick={() => this.showUser(user)} key={this.props.users.indexOf(user)}>
-              {user.name}
-            </div>
-          ))}
-        </div>
-        <table>
-          {this.props.users.map((user) => (
-            <tbody className={this.state.a[this.props.users.indexOf(user)]} key={this.props.users.indexOf(user)}>
-              <tr>
-                <td>{user.name}</td>
-                <td>{this.state.cat[this.props.users.indexOf(user)]}</td>
-              </tr>
-            </tbody>
-          ))}
-        </table>
+      <div>
+        <SessionManagement/>
+        <Dtable users={this.props.users} category={this.props.category}/>
       </div>
     );
   }

@@ -1,16 +1,19 @@
 import React, { Component } from 'react';
 import './App.css';
 import './App'
-
+import './index'
+import * as firebase from 'firebase'
 class table extends React.Component{
     constructor(props){
         super(props);
         this.showUser=this.showUser.bind(this)
+        var users=[]
+        console.log("dafsad",users)
         this.state = ({
             show: [this.props.users.length], 
             a: [this.props.users.length],
             b:[this.props.users.length],
-            cat: [this.props.category.length]
+            cat: [this.props.category.length],
         })
         for (var i=0;i<this.props.users.length;i++){
             this.state.show[i]= true
@@ -19,7 +22,7 @@ class table extends React.Component{
             this.state.cat[i]=this.props.category[i]
         }
     }
-
+    
     showUser(name){
     if(this.state.show[this.props.users.indexOf(name)]===false)
     {

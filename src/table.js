@@ -7,7 +7,6 @@ class table extends React.Component{
     constructor(props){
         super(props);
         this.showUser=this.showUser.bind(this)
-        var users=[]
         console.log("dafsad",this.props.users)
         this.state = ({
             show: [this.props.users.length], 

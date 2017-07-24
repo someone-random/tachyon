@@ -33,7 +33,7 @@ class SessionManagment extends Component{
             <div>
                 <button type="button" onClick={() => this.login()}>Sign in</button>
                 <button type="button" onClick={() => this.logout()}>Sign out</button>
-                <button type="button" onClick={() => ReactDOM.render(<Home users={this.props.users} category={this.props.category}/>, document.getElementById('root'))}>Return to home</button>
+                <button type="button" onClick={() => ReactDOM.render(<Home users={this.props.users} category={this.props.category} brand={this.props.brand}/>, document.getElementById('root'))}>Return to home</button>
             </div>
         )
     }

@@ -13,7 +13,7 @@ class App extends Component {
     console.log("z",this.props.users)
     return (
       <div>
-        <SessionManagement data={this.props.users} category={this.props.category}/>
+        <SessionManagement category={this.props.category} users={this.props.users} brand={this.props.brand}/>
         <Dtable category={this.props.category} users={this.props.users} brand={this.props.brand}/>
       </div>
     );

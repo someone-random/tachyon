@@ -29,6 +29,19 @@ var users = [
   {name:'H'},
   {name:'I'},
 ]
+var a0 = new Promise((resolve,reject) => {
+  console.log("abc")
+  var data0=[]
+  for(var i=1;i<=5;i++){
+    var database = firebase.database().ref("/users/"+i+"/a");
+    database.on('value', (snapshot)=>{
+      data0.push({name: snapshot.val()})
+      if(data0.length===5){
+        resolve(data0)
+      }
+    })
+  }
+})
 var a = new Promise((resolve,reject) => {
   console.log("abc")
   var data=[]
@@ -36,7 +49,6 @@ var a = new Promise((resolve,reject) => {
     var database = firebase.database().ref("/users/"+i+"/b");
     database.on('value', (snapshot)=>{
       data.push(snapshot.val())
-      console.log(data)
       if(data.length===5){
         resolve(data)
       }
@@ -50,16 +62,15 @@ var b = new Promise((resolve,reject) => {
     var database = firebase.database().ref("/users/"+i+"/c");
     database.on('value', (snapshot)=>{
       data.push(snapshot.val())
-      console.log(data)
       if(data.length===5){
         resolve(data)
       }
     })
   }
 })
-Promise.all([a,b]).then((a,b)=>{
+Promise.all([a0,a,b]).then((a,)=>{
   console.log("a and b",a)
-  ReactDOM.render(<Home users={users} category={a[0]} brand={a[1]}/>, document.getElementById('root'))
+  ReactDOM.render(<Home users={a[0]} category={a[1]} brand={a[2]}/>, document.getElementById('root'))
 })
 firebase.auth().onAuthStateChanged(function(user){
   if(user){

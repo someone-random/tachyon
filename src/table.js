@@ -8,7 +8,7 @@ class table extends React.Component{
         super(props);
         this.showUser=this.showUser.bind(this)
         var users=[]
-        console.log("dafsad",users)
+        console.log("dafsad",this.props.users)
         this.state = ({
             show: [this.props.users.length], 
             a: [this.props.users.length],
@@ -43,7 +43,7 @@ class table extends React.Component{
             <div id="names">
             {this.props.users.map((user) => (
                 <div className={this.state.b[this.props.users.indexOf(user)]} onClick={() => this.showUser(user)} key={this.props.users.indexOf(user)}>
-                {user.name}
+                {this.props.users[this.props.users.indexOf(user)]}
                 </div>
             ))}
             </div>
@@ -51,7 +51,7 @@ class table extends React.Component{
             {this.props.users.map((user) => (
                 <tbody className={this.state.a[this.props.users.indexOf(user)]} key={this.props.users.indexOf(user)}>
                 <tr>
-                    <td>{user.name}</td>
+                    <td>{this.props.users[this.props.users.indexOf(user)]}</td>
                     <td>{this.state.cat[this.props.users.indexOf(user)]}</td>
                 </tr>
                 </tbody>

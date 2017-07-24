@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
 import App from './App'
 import ReactDOM from 'react-dom';
 import './index.js'
@@ -9,6 +8,7 @@ class home extends React.Component{
         this.handleClick=this.handleClick.bind(this)
     }
     handleClick(){
+        console.log("de",this.props.users)
         ReactDOM.render(<App users={this.props.users} category={this.props.category}/>, document.getElementById('root'))
     }
     render(){

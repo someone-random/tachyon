@@ -8,13 +8,12 @@ import Data from './data'
 class App extends Component {
   constructor(){
     super()
-    var users=<Data/>
-    console.log("123",users)
   }
   render() {
+    console.log("z",this.props.users)
     return (
       <div>
-        <SessionManagement users={this.props.users} category={this.props.category}/>
+        <SessionManagement data={this.props.users} category={this.props.category}/>
         <Dtable category={this.props.category} users={this.props.users}/>
       </div>
     );

@@ -24,22 +24,29 @@ var users = [
   {name:'C'},
   {name:'D'},
   {name:'E'},
-  {name:'F'},
   {name:'G'},
+  {name:'F'},
   {name:'H'},
   {name:'I'},
-
 ]
-var data=[]
-for(var i=1;i<=5;i++){
-  var database = firebase.database().ref("/users/"+i+"/a");
-    database.on('value', function(snapshot){
-        console.log("hello")
-        data.push(snapshot.val())
-        console.log("data",data)
+new Promise((resolve,reject) => {
+  console.log("abc")
+  var data=[]
+  for(var i=1;i<=5;i++){
+    var database = firebase.database().ref("/users/"+i+"/a");
+    database.on('value', (snapshot)=>{
+      data.push(snapshot.val())
+      if(data.length===5){
+        resolve(data)
+      }
     })
   }
-
+  console.log("2",data)
+  })
+  .then((data) => {
+    console.log("dafs",data)
+    ReactDOM.render(<Home users={data} category={category}/>, document.getElementById('root'))
+  })
 firebase.auth().onAuthStateChanged(function(user){
   if(user){
     var email = user.email
@@ -47,9 +54,8 @@ firebase.auth().onAuthStateChanged(function(user){
   }
   else{
     console.log("out")
-  } 
+  }
 })
-console.log("1234", data)
-ReactDOM.render(<Home users={users} category={category}/>, document.getElementById('root'));
+console.log("hi")
+
 //registerServiceWorker();
-export default users

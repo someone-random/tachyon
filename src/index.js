@@ -14,7 +14,7 @@ var config = {
   storageBucket: "tachyon-173612.appspot.com",
   messagingSenderId: "336062402100"
 };
-export const category = [
+const category = [
   'A','B','C','D','E','F','G','H','I'
 ]
 firebase.initializeApp(config);
@@ -29,24 +29,38 @@ var users = [
   {name:'H'},
   {name:'I'},
 ]
-new Promise((resolve,reject) => {
+var a = new Promise((resolve,reject) => {
   console.log("abc")
   var data=[]
   for(var i=1;i<=5;i++){
-    var database = firebase.database().ref("/users/"+i+"/a");
+    var database = firebase.database().ref("/users/"+i+"/b");
     database.on('value', (snapshot)=>{
       data.push(snapshot.val())
+      console.log(data)
       if(data.length===5){
         resolve(data)
       }
     })
   }
-  console.log("2",data)
-  })
-  .then((data) => {
-    console.log("dafs",data)
-    ReactDOM.render(<Home users={data} category={category}/>, document.getElementById('root'))
-  })
+})
+var b = new Promise((resolve,reject) => {
+  console.log("abc")
+  var data=[]
+  for(var i=1;i<=5;i++){
+    var database = firebase.database().ref("/users/"+i+"/c");
+    database.on('value', (snapshot)=>{
+      data.push(snapshot.val())
+      console.log(data)
+      if(data.length===5){
+        resolve(data)
+      }
+    })
+  }
+})
+Promise.all([a,b]).then((a,b)=>{
+  console.log("a and b",a)
+  ReactDOM.render(<Home users={users} category={a[0]} brand={a[1]}/>, document.getElementById('root'))
+})
 firebase.auth().onAuthStateChanged(function(user){
   if(user){
     var email = user.email

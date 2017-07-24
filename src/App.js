@@ -14,7 +14,7 @@ class App extends Component {
     return (
       <div>
         <SessionManagement data={this.props.users} category={this.props.category}/>
-        <Dtable category={this.props.category} users={this.props.users}/>
+        <Dtable category={this.props.category} users={this.props.users} brand={this.props.brand}/>
       </div>
     );
   }

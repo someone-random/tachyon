@@ -14,12 +14,14 @@ class table extends React.Component{
             a: [this.props.users.length],
             b:[this.props.users.length],
             cat: [this.props.category.length],
+            bran: [this.props.brand.length]
         })
         for (var i=0;i<this.props.users.length;i++){
             this.state.show[i]= true
             this.state.a[i]= "nohighlight"
             this.state.b[i]="username"
             this.state.cat[i]=this.props.category[i]
+            this.state.bran[i]=this.props.brand[i]
         }
     }
     
@@ -43,17 +45,18 @@ class table extends React.Component{
             <div id="names">
             {this.props.users.map((user) => (
                 <div className={this.state.b[this.props.users.indexOf(user)]} onClick={() => this.showUser(user)} key={this.props.users.indexOf(user)}>
-                {this.props.users[this.props.users.indexOf(user)]}
+                {user.name}
                 </div>
             ))}
             </div>
             <table>
             {this.props.users.map((user) => (
                 <tbody className={this.state.a[this.props.users.indexOf(user)]} key={this.props.users.indexOf(user)}>
-                <tr>
-                    <td>{this.props.users[this.props.users.indexOf(user)]}</td>
-                    <td>{this.state.cat[this.props.users.indexOf(user)]}</td>
-                </tr>
+                    <tr>
+                        <td>{user.name}</td>
+                        <td>{this.state.cat[this.props.users.indexOf(user)]}</td>
+                        <td>{this.state.bran[this.props.users.indexOf(user)]}</td>
+                    </tr>
                 </tbody>
                 ))}
             </table>

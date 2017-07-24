@@ -9,7 +9,7 @@ class home extends React.Component{
     }
     handleClick(){
         console.log("de",this.props.users)
-        ReactDOM.render(<App users={this.props.users} category={this.props.category}/>, document.getElementById('root'))
+        ReactDOM.render(<App users={this.props.users} category={this.props.category} brand={this.props.brand}/>, document.getElementById('root'))
     }
     render(){
         return(
